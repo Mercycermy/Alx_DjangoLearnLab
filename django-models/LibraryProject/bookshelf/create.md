@@ -1,4 +1,9 @@
-new_book = Book(title='1984', author = 'George Orwell', publication_year = '1949')
-Book.objects.create
-new_book.save()
-#new book creation
+## Create Operation
+
+### Command
+```python
+from myapp.models import Book
+book1 = Book.objects.create(title='1984',author='George Orwell',publication_year=1949)
+print(book1)
+Book object (2)
+#successful creation
