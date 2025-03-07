@@ -1,5 +1,4 @@
 from django.urls import path
-from .models import Book
 from .views import BookList
 
 
