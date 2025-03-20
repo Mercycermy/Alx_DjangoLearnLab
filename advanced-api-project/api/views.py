@@ -21,7 +21,11 @@ class BookCreateView(generics.CreateAPIView):
 class BookListView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['title', 'author', 'publication_year']
+    search_fields = ['title', 'author']
+    ordering_fields = ['title', 'publication_year']
+  
 
 class BookDetailView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
@@ -31,6 +35,7 @@ class BookUpdateView(generics.UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = 'pk'
+    
     def get_object(self):
         
         obj = super().get_object()
@@ -39,4 +44,6 @@ class BookDeleteView(generics.DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = 'pk'
+    permission_classes = [permissions.IsAuthenticated]
+
     
