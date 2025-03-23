@@ -1,0 +1,9 @@
+<!-- blog/templates/blog/post_form.html -->
+<h2>Create/Edit Post</h2>
+<!-- blog/templates/blog/post_form.html -->
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'post-list' %}">Cancel</a>
